@@ -5,3 +5,12 @@
 
  done very stupidly for safety 👷
 
+
+ ## Requirements
+
+https://github.com/SinisterRectus/Discordia
+
+https://luvit.io/
+
+
+
