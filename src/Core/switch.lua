@@ -4,7 +4,10 @@ local client = discordia.Client()
 client:on('ready', function()
 	print('Logged in as '.. client.user.username)
 
+    client:setGame{type = 1, name= ' with the lights'}
+
     MessageContent = client:getChannel(io.open("./src/Data/channelid.txt"):read()):getMessage(io.open("./src/Data/messageid.txt"):read())
+
 
 end)
 
@@ -53,6 +56,12 @@ client:on('messageCreate', function(message)
                 file:close()
             else
                 print("error:", err)
+                end
+
+        else if message.content == 'ping' then
+
+                message:reply('pong')
+
                 end
             end
         end
@@ -106,7 +115,7 @@ client:on('reactionRemove', function (reaction)
 
         local file,err = io.open("./src/Data/black.txt",'w')
         if file then
-            file:write(tostring(reaction.count - 1))
+            file:write(tostring(reaction.count))
             file:close()
         else
             print("error:", err)
@@ -117,7 +126,7 @@ client:on('reactionRemove', function (reaction)
 
         local file,err = io.open("./src/Data/white.txt",'w')
         if file then
-            file:write(tostring(reaction.count - 1))
+            file:write(tostring(reaction.count))
             file:close()
         else
             print("error:", err)
